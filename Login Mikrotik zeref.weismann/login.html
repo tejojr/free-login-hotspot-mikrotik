@@ -1,0 +1,135 @@
+<!--Created by Ammar Annajih Pasifiky / zeref.weismann SMK Negeri 1 Purbalingga-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>Login Mikrotik</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="expires" content="-1" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+<style type="text/css">
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  height: 100%;
+  background-image: url(b.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  display: flex;
+  min-height: 100vh;
+/*Created by Ammar Annajih Pasifiky / zeref.weismann SMK Negeri 1 Purbalingga*/
+}
+.a{
+  margin: auto;
+  width: 50%;
+  max-width: 500px;
+  text-align: center;
+  background-color: rgba(0,0,0,0.6);
+  padding:30px;
+  border: 0px solid;
+  border-radius: 25px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 8px 20px 0 rgba(0,0,0,0.19);
+}
+h2{
+  margin-bottom: 20px;
+  color: white;
+}
+input{
+  display: block;
+  padding: 10px;
+  width: 100%;
+  margin: 30px 0;
+  font-size: 20px;
+
+}
+input[type="text"],input[type="password"]{
+  background-color: #1c8adb;
+  border: 0;
+  border-bottom: 1px solid #fff;
+  background: transparent;
+  opacity: 0.8;
+  outline: none;
+  margin-bottom: 0;
+  color: #fff;
+}
+input[type="submit"]{
+  background-color: #1c8adb;
+  border: 0;
+  opacity: 0.8;
+  cursor: pointer;;
+  border-radius: 20px;
+  margin-bottom: 0;
+  color: #fff;
+}
+input[type="submit"]:hover {
+  opacity: 1;
+  transform: scale(1.1);
+
+}
+@media only screen and (max-width: 767px) {
+  body {
+    background-image: url(c.jpg);
+  }
+  form{
+    width: 75%;
+  }
+}
+@media (max-width: 480px){
+  form{
+    width: 95%;
+  }
+}
+a, a:link, a:visited, a:active { color: #AAAAAA; text-decoration: none; font-size: 10px; }
+a:hover { border-bottom: 1px dotted #c1c1c1; color: #AAAAAA; }
+img {border: none;}
+td { font-size: 14px; color: #7A7A7A; }
+</style>
+</head>
+
+<body>
+$(if chap-id)
+	<form name="sendin" action="$(link-login-only)" method="post">
+		<input type="hidden" name="username" />
+		<input type="hidden" name="password" />
+		<input type="hidden" name="dst" value="$(link-orig)" />
+		<input type="hidden" name="popup" value="true" />
+	</form>
+	<script type="text/javascript" src="/md5.js"></script>
+	<script type="text/javascript">
+	<!--
+	    function doLogin() {
+		document.sendin.username.value = document.login.username.value;
+		document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+		document.sendin.submit();
+		return false;
+	    }
+	//-->
+	</script>
+$(endif)
+		<form name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()" $(endif) class="a">
+      <h2>Login Mikrotik</h2>
+  		<input type="hidden" name="dst" value="$(link-orig)" />
+			<input type="hidden" name="popup" value="true" />
+      <input name="username" type="text" value="$(username)" placeholder="uname"/>
+			<input name="password" type="password" placeholder="password"/>
+			<input type="submit" value="OK" />
+      <br>
+      <p>$(if trial == 'yes')Bagi yang miskin bandwwith boleh masuk<a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)">click here</a>.$(endif)</p>
+      <br /><div style="color: #c1c1c1; font-size: 9px">design by zerefweismann</div>
+    	$(if error)<br /><div style="color: #FF8080; font-size: 9px">$(error)</div>$(endif)
+  	</form>
+
+<script type="text/javascript">
+<!--
+  document.login.username.focus();
+//-->
+</script>
+</body>
+</html>
+<!--Created by Ammar Annajih Pasifiky / zeref.weismann SMK Negeri 1 Purbalingga-->
